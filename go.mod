@@ -15,7 +15,7 @@ require (
 	github.com/go-redis/redis_rate/v9 v9.1.2
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	golang.org/x/time v0.0.0-20191024005414-555d28b269f0
+	golang.org/x/time v0.5.0
 )
 
 require (
