@@ -22,7 +22,7 @@ func Sentinel() gin.HandlerFunc {
 
 	return sentinel.SentinelMiddleware(
 		sentinel.WithBlockFallback(func(c *gin.Context) {
-			c.AbortWithStatusJSON(http.StatusOK, tooManyRequestError)
+			c.AbortWithStatusJSON(http.StatusBadRequest, tooManyRequestError)
 		}),
 	)
 }

@@ -7,8 +7,8 @@ import (
 )
 
 var tooManyRequestError = &dgerr.DgError{
-	Code:    http.StatusInternalServerError,
-	Message: "too many request; the quota used up!",
+	Code:    http.StatusBadRequest,
+	Message: "请求太频繁",
 }
 
 func SkippedPathPrefixes(c *gin.Context, prefixes ...string) bool {
