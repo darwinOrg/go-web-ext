@@ -4,7 +4,7 @@ go 1.23
 
 require (
 	github.com/alibaba/sentinel-golang v1.0.4
-	github.com/alibaba/sentinel-golang/pkg/adapters/gin v0.0.0-20230626085943-08071855bc67
+	github.com/alibaba/sentinel-golang/pkg/adapters/gin v0.0.0-20241224061304-f4c2c5964666
 	github.com/casbin/casbin/v2 v2.103.0
 	github.com/darwinOrg/go-common v0.1.73
 	github.com/darwinOrg/go-logger v0.0.9
@@ -14,7 +14,7 @@ require (
 	github.com/go-redis/redis_rate/v10 v10.0.1
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/redis/go-redis/v9 v9.0.2
+	github.com/redis/go-redis/v9 v9.7.0
 	golang.org/x/time v0.9.0
 )
 
