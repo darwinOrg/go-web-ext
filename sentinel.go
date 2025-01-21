@@ -1,4 +1,4 @@
-package middleware
+package dgwe
 
 import (
 	"github.com/alibaba/sentinel-golang/core/system"

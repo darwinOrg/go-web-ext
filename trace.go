@@ -1,4 +1,4 @@
-package middleware
+package dgwe
 
 import (
 	"github.com/gin-gonic/gin"

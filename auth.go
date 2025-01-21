@@ -1,4 +1,4 @@
-package middleware
+package dgwe
 
 import (
 	"github.com/darwinOrg/go-common/result"

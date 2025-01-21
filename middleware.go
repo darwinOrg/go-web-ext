@@ -1,4 +1,4 @@
-package middleware
+package dgwe
 
 import (
 	dgerr "github.com/darwinOrg/go-common/enums/error"

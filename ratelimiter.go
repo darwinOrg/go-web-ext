@@ -1,17 +1,17 @@
-package middleware
+package dgwe
 
 import (
 	"context"
 	"github.com/darwinOrg/go-common/result"
 	dglogger "github.com/darwinOrg/go-logger"
 	"github.com/darwinOrg/go-web/utils"
-	"github.com/go-redis/redis/v8"
+	"github.com/go-redis/redis_rate/v10"
+	"github.com/redis/go-redis/v9"
 	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-redis/redis_rate/v9"
 	"github.com/patrickmn/go-cache"
 	"golang.org/x/time/rate"
 )
@@ -137,9 +137,9 @@ func (s *RateLimiterRedisStore) Allow(ctx context.Context, identifier string, pe
 		return true, nil
 	}
 
-	result, err := s.limiter.Allow(ctx, identifier, redis_rate.PerSecond(maxRequests/int(period.Seconds())))
+	rt, err := s.limiter.Allow(ctx, identifier, redis_rate.PerSecond(maxRequests/int(period.Seconds())))
 	if err != nil {
 		return false, err
 	}
-	return result.Allowed > 0, nil
+	return rt.Allowed > 0, nil
 }
