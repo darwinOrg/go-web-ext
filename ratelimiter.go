@@ -2,6 +2,7 @@ package dgwe
 
 import (
 	"context"
+	dgerr "github.com/darwinOrg/go-common/enums/error"
 	"github.com/darwinOrg/go-common/result"
 	dglogger "github.com/darwinOrg/go-logger"
 	"github.com/darwinOrg/go-web/utils"
@@ -66,7 +67,7 @@ func RateLimiterWithConfig(config RateLimiterConfig) gin.HandlerFunc {
 		} else if allowed {
 			c.Next()
 		} else {
-			c.AbortWithStatusJSON(http.StatusOK, tooManyRequestError)
+			c.AbortWithStatusJSON(http.StatusOK, result.SimpleFailByError(dgerr.TOO_MANY_REQUEST))
 		}
 	}
 }

@@ -1,15 +1,8 @@
 package dgwe
 
 import (
-	dgerr "github.com/darwinOrg/go-common/enums/error"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
-
-var tooManyRequestError = &dgerr.DgError{
-	Code:    http.StatusBadRequest,
-	Message: "请求太频繁",
-}
 
 func SkippedPathPrefixes(c *gin.Context, prefixes ...string) bool {
 	if len(prefixes) == 0 {
