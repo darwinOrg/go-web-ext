@@ -2,6 +2,7 @@ package dgwe
 
 import (
 	"github.com/darwinOrg/go-common/result"
+	"github.com/darwinOrg/go-web/middleware"
 	"github.com/darwinOrg/go-web/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -16,8 +17,8 @@ type AuthConfig struct {
 
 func AuthWithConfig(config AuthConfig) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if !AllowedPathPrefixes(c, config.AllowedPathPrefixes...) ||
-			SkippedPathPrefixes(c, config.SkippedPathPrefixes...) ||
+		if !middleware.AllowedPathPrefixes(c, config.AllowedPathPrefixes...) ||
+			middleware.SkippedPathPrefixes(c, config.SkippedPathPrefixes...) ||
 			(config.Skipper != nil && config.Skipper(c)) {
 			c.Next()
 			return

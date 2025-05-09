@@ -4,6 +4,7 @@ import (
 	"github.com/casbin/casbin/v2"
 	dgerr "github.com/darwinOrg/go-common/enums/error"
 	"github.com/darwinOrg/go-common/result"
+	"github.com/darwinOrg/go-web/middleware"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -18,8 +19,8 @@ type CasbinConfig struct {
 
 func CasbinWithConfig(config CasbinConfig) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if !AllowedPathPrefixes(c, config.AllowedPathPrefixes...) ||
-			SkippedPathPrefixes(c, config.SkippedPathPrefixes...) ||
+		if !middleware.AllowedPathPrefixes(c, config.AllowedPathPrefixes...) ||
+			middleware.SkippedPathPrefixes(c, config.SkippedPathPrefixes...) ||
 			(config.Skipper != nil && config.Skipper(c)) {
 			c.Next()
 			return

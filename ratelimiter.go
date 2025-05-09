@@ -5,6 +5,7 @@ import (
 	dgerr "github.com/darwinOrg/go-common/enums/error"
 	"github.com/darwinOrg/go-common/result"
 	dglogger "github.com/darwinOrg/go-logger"
+	"github.com/darwinOrg/go-web/middleware"
 	"github.com/darwinOrg/go-web/utils"
 	"github.com/go-redis/redis_rate/v10"
 	"github.com/redis/go-redis/v9"
@@ -31,7 +32,7 @@ type RateLimiterConfig struct {
 
 func RateLimiterWithConfig(config RateLimiterConfig) gin.HandlerFunc {
 	if !config.Enable {
-		return Empty()
+		return middleware.Empty()
 	}
 
 	var store RateLimiterStorer
@@ -43,8 +44,8 @@ func RateLimiterWithConfig(config RateLimiterConfig) gin.HandlerFunc {
 	}
 
 	return func(c *gin.Context) {
-		if !AllowedPathPrefixes(c, config.AllowedPathPrefixes...) ||
-			SkippedPathPrefixes(c, config.SkippedPathPrefixes...) {
+		if !middleware.AllowedPathPrefixes(c, config.AllowedPathPrefixes...) ||
+			middleware.SkippedPathPrefixes(c, config.SkippedPathPrefixes...) {
 			c.Next()
 			return
 		}

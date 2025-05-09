@@ -1,6 +1,7 @@
 package dgwe
 
 import (
+	"github.com/darwinOrg/go-web/middleware"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -46,7 +47,7 @@ var DefaultCORSConfig = CORSConfig{
 
 func CORSWithConfig(cfg CORSConfig) gin.HandlerFunc {
 	if !cfg.Enable {
-		return Empty()
+		return middleware.Empty()
 	}
 
 	return cors.New(cors.Config{
